@@ -5,6 +5,11 @@ namespace Battleships.App.Utils
 {
     public static class StringExtensions
     {
+        /// <summary>
+        /// Validates proper coordinates format of input string from the user.
+        /// </summary>
+        /// <param name="shot">User input string</param>
+        /// <returns>The method returns bool</returns>
         public static bool IsProperShot(this string? shot)
         {
             if (shot is null) return false;

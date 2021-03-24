@@ -4,26 +4,36 @@ namespace Battleships.App.Utils
 {
     public static class ConsoleHelper
     {
+        /// <summary>
+        /// Writes information under playing board.
+        /// </summary>
+        /// <param name="content">Information to view</param>
         public static void WriteInfo(string content)
         {
             //clear info rows
-            Console.SetCursorPosition(0,14);
-            Console.Write("".PadRight(Console.WindowWidth, ' '));
-            Console.SetCursorPosition(0,15);
-            Console.Write("".PadRight(Console.WindowWidth, ' '));
-            
+            ClearInfoRows();
+
             //write new info to console
             Console.SetCursorPosition(0,14);
             Console.WriteLine($"[INFO]: {content}");
             Console.Write("Your shot: ");
         }
 
+        /// <summary>
+        /// Writes character on playing board.
+        /// </summary>
+        /// <param name="character">Character to write</param>
+        /// <param name="col">Column of the board</param>
+        /// <param name="row">Row of the board</param>
         public static void WriteChar(char character, int col, int row)
         {
             Console.SetCursorPosition(col * 4 + 4, row + 2);
             Console.Write(character);
         }
         
+        /// <summary>
+        /// Shows welcome screen with playing instructions.
+        /// </summary>
         public static void ShowWelcomeScreen()
         {
             Console.WriteLine("Welcome to the game of battleships!");
@@ -38,14 +48,24 @@ namespace Battleships.App.Utils
             Console.Write("To start a game press any button:");
         }
 
+        /// <summary>
+        /// Shows you win information under playing board.
+        /// </summary>
         public static void ShowYouWinScreen()
         {
-            Console.Clear();
-            Console.SetCursorPosition(0,0);
+            
+            //clear info rows
+            ClearInfoRows();
+            
+            //write you win info
+            Console.SetCursorPosition(0,14);
             Console.WriteLine("Congratulations you won!");
             Console.Write("To play another game press ENTER to leave press any other button: ");
         }
         
+        /// <summary>
+        /// Draws the playing board in a console.
+        /// </summary>
         public static void DrawBoard()
         {
             Console.Clear();
@@ -63,6 +83,17 @@ namespace Battleships.App.Utils
             Console.WriteLine("8 |                                       |");
             Console.WriteLine("9 |                                       |");
             Console.WriteLine("   ---------------------------------------");
+        }
+        
+        /// <summary>
+        /// Clears information rows.
+        /// </summary>
+        private static void ClearInfoRows()
+        {
+            Console.SetCursorPosition(0, 14);
+            Console.Write("".PadRight(Console.WindowWidth, ' '));
+            Console.SetCursorPosition(0, 15);
+            Console.Write("".PadRight(Console.WindowWidth, ' '));
         }
     }
 }

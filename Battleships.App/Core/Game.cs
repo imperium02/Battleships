@@ -8,7 +8,7 @@ namespace Battleships.App.Core
 {
     public class Game
     {
-        private List<Ship> _ships;
+        private List<Ship> _ships = new List<Ship>();
 
         /// <summary>
         /// Starts the game loop.
@@ -58,8 +58,8 @@ namespace Battleships.App.Core
                 var ship = _ships.First(s => s.HasPosition(column, row));
                 ConsoleHelper.WriteChar('X', column, row);
                 ConsoleHelper.WriteInfo(ship.IsDestroyed()
-                    ? $"Good shot at {shot}! {ship.Name} destroyed!"
-                    : $"Good shot at {shot}! It's a {ship.Name}!");
+                    ? $"Good shot at {shot}! {ship.Type} destroyed!"
+                    : $"Good shot at {shot}! It's a {ship.Type}!");
             }
             else
             {

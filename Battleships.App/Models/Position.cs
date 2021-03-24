@@ -7,14 +7,14 @@ namespace Battleships.App.Models
         public int Column { get; set; }
         public char ColumnCharacter { get; set; }
         public int Row { get; set; }
-        public bool Taken { get; set; }
+        public bool Hit { get; set; }
 
         public Position(int column, int row)
         {
             Column = column;
             ColumnCharacter = (char) ('A' + column);
             Row = row;
-            Taken = false;
+            Hit = false;
         }
 
         public bool Equals(Position other)
