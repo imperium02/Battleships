@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Battleships.App.Core;
+using Battleships.App.Utils;
 
 namespace Battleships.App
 {
@@ -8,9 +9,13 @@ namespace Battleships.App
     {
         static void Main(string[] args)
         {
+            ConsoleHelper.ShowWelcomeScreen();
+            
             var game = new Game();
-            game.ShowWelcomeScreen();
-            game.StartGame();
+            while (Console.ReadKey().Key == ConsoleKey.Enter)
+            {
+                game.StartGame();    
+            }
             
         }
 
