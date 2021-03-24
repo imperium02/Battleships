@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Battleships.App
+namespace Battleships.App.Models
 {
     public class Position : IEquatable<Position>
     {

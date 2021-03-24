@@ -1,4 +1,4 @@
-﻿namespace Battleships.App
+﻿namespace Battleships.App.Utils
 {
     public enum Rotation
     {

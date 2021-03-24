@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
+using Battleships.App.Models;
+using Battleships.App.Utils;
 
-namespace Battleships.App
+namespace Battleships.App.Components
 {
     class Ship
     {
