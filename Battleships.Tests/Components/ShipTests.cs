@@ -12,6 +12,7 @@ namespace Battleships.Tests.Components
         private Ship _cruiser;
         private Ship _battleship;
         private Ship _notDefined;
+        private Ship _preDefined;
         
         [SetUp]
         public void SetUp()
@@ -20,6 +21,16 @@ namespace Battleships.Tests.Components
             _cruiser = new Ship(4);
             _battleship = new Ship(5);
             _notDefined = new Ship(6);
+            _preDefined = new Ship()
+            {
+                Positions =
+                {
+                    new Position(1, 1),
+                    new Position(1, 2),
+                    new Position(1, 3),
+                    new Position(1, 4)
+                }
+            };
         }
         
         [Test]
@@ -44,30 +55,43 @@ namespace Battleships.Tests.Components
         [Test]
         public void TestProperIsHit()
         {
-            _cruiser.Positions.Clear();
-            _cruiser.Positions.AddRange(new List<Position>()
-            {
-                new Position(1, 1),
-                new Position(1, 2),
-                new Position(1, 3),
-                new Position(1, 4)
-            });
-            Assert.IsTrue(_cruiser.IsHit(1,1));
+            Assert.IsTrue(_preDefined.IsHit(1,1));
         }
 
         [Test]
-        public void TestimproperIsHit()
+        public void TestImproperIsHit()
         {
-            _cruiser.Positions.Clear();
-            _cruiser.Positions.AddRange(new List<Position>()
-            {
-                new Position(1, 1),
-                new Position(1, 2),
-                new Position(1, 3),
-                new Position(1, 4)
-            });
-            Assert.IsFalse(_cruiser.IsHit(2,2));
+            Assert.IsFalse(_preDefined.IsHit(2,2));
             Assert.IsFalse(_emptyShip.IsHit(1,1));
+        }
+
+        [Test]
+        public void TestProperHasPosition()
+        {
+            Assert.IsTrue(_preDefined.HasPosition(1,1));
+            Assert.IsTrue(_preDefined.HasPosition("B1"));
+        }
+
+        [Test]
+        public void TestImproperHasPosition()
+        {
+            Assert.IsFalse(_preDefined.HasPosition(2,2));
+            Assert.IsFalse(_preDefined.HasPosition("A0"));
+            Assert.IsFalse(_preDefined.HasPosition("6B"));
+        }
+
+        [Test]
+        public void TestProperIsDestroyed()
+        {
+            var ship = new Ship() {Positions = {new Position(1,1) {Hit = true}}};
+            
+            Assert.IsTrue(ship.IsDestroyed());
+        }
+
+        [Test]
+        public void TestImproperIsDestroyed()
+        {
+            Assert.IsFalse(_cruiser.IsDestroyed());
         }
     }
 }

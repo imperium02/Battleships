@@ -26,18 +26,29 @@ namespace Battleships.App.Components
                     createdShips.Add(new Ship(5));
                 }
 
-                //get coordinates of all ships and check if they are unique
-                var shipPositions = createdShips.SelectMany(s => s.Positions);
-                if (shipPositions.Distinct().Count() != shipPositions.Count())
+                //check if ships have intersecting positions with each other
+                if (AreShipsIntersecting(createdShips))
                 {
                     createdShips.Clear();
                     continue;
                 }
+                   
 
                 allProper = true;
             }
 
             return createdShips;
+        }
+
+        /// <summary>
+        /// Checks if given ships have intersecting positions with each other
+        /// </summary>
+        /// <param name="ships">created list of ships</param>
+        /// <returns>The method returns bool</returns>
+        public static bool AreShipsIntersecting(List<Ship> ships)
+        {
+            var shipPositions = ships.SelectMany(s => s.Positions);
+            return shipPositions.Distinct().Count() != shipPositions.Count();
         }
     }
 }

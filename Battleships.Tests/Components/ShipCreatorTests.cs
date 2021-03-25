@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Battleships.App.Components;
+using Battleships.App.Models;
 using NUnit.Framework;
 
 namespace Battleships.Tests.Components
@@ -28,6 +29,30 @@ namespace Battleships.Tests.Components
             var distinctPositions = shipPositions.Distinct().Count();
             
             Assert.AreEqual(distinctPositions, shipPositions.Count);
+        }
+
+        [Test]
+        public void TestProperAreShipsIntersecting()
+        {
+            var ships = new List<Ship>()
+            {
+                new Ship() {Positions = {new Position(1, 1)}},
+                new Ship() {Positions = {new Position(1, 2)}}
+            };
+            
+            Assert.IsFalse(ShipCreator.AreShipsIntersecting(ships));
+        }
+
+        [Test]
+        public void TestImproperAreShipsIntersecting()
+        {
+            var ships = new List<Ship>()
+            {
+                new Ship() {Positions = {new Position(1, 1)}},
+                new Ship() {Positions = {new Position(1,1)}}
+            };
+            
+            Assert.IsTrue(ShipCreator.AreShipsIntersecting(ships));
         }
     }
 }

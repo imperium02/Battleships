@@ -16,9 +16,4 @@
       <ProjectReference Include="..\Battleships.App\Battleships.App.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Models" />
-      <Folder Include="Utils" />
-    </ItemGroup>
-
 </Project>
