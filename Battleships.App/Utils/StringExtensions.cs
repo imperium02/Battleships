@@ -20,6 +20,7 @@ namespace Battleships.App.Utils
             if (!char.IsUpper(shot[0])) return false;
             if (!Regex.IsMatch(shot, $"^[A-{(char) ('A' + (size - 1))}].*")) return false;
             if (!char.IsDigit(shot[1])) return false;
+            if (shot[1] == '0') return false;
             if (size > 10 && shot.Length == 3)
             {
                 if (!char.IsDigit(shot[2])) return false;
@@ -27,14 +28,15 @@ namespace Battleships.App.Utils
                 var rowInt = Convert.ToInt32(rowString);
                 if (rowInt > 25) return false;
             }
-            else
-            {
-                if (shot.Length != 2) return false;
-            }
 
             return true;
         }
 
+        /// <summary>
+        /// Validates proper size of the input string from a user
+        /// </summary>
+        /// <param name="size">input string</param>
+        /// <returns>The method returns bool</returns>
         public static bool IsProperSize(this string? size)
         {
             if (size is null) return false;
@@ -45,6 +47,7 @@ namespace Battleships.App.Utils
             }
             int sizeInt = Convert.ToInt32(size);
             if (sizeInt <= 0 || sizeInt >= 27) return false;
+            if (!Regex.IsMatch(size,"^[1-9].*")) return false;
 
             return true;
         }

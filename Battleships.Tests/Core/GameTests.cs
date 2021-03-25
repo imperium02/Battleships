@@ -46,9 +46,8 @@ namespace Battleships.Tests.Core
         [Test]
         public void MakeMissedShotTest()
         {
-            var shot = "A0";
-            
-            Assert.IsFalse(_game.MakeShot(shot));
+            Assert.IsFalse(_game.MakeShot("A0"));
+            Assert.IsFalse(_game.MakeShot("A14"));
         }
         
         [Theory]
