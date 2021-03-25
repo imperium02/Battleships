@@ -11,16 +11,26 @@ using NUnit.Framework;
 
 namespace Battleships.Tests.Core
 {
-    [TestFixture, NonParallelizable()]
+    [TestFixture]
     public class GameTests
     {
         private Game _game;
         [SetUp]
         public void SetUp()
         {
-            _game = new Game() {Ships = new List<Ship>()
+            _game = new Game() { Ships = new List<Ship>()
             {
-                new Ship(){Positions = {new Position(1,1),new Position(1,2),new Position(1,3), new Position(1,4)}, Type = "Cruiser"}
+                new Ship()
+                {
+                    Positions = {
+                        new Position(1,1), 
+                        new Position(1,2),
+                        new Position(1,3), 
+                        new Position(1,4)
+                        
+                    }, 
+                    Type = "Cruiser"
+                }
             }};
         }
         
