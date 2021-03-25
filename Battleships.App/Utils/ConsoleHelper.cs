@@ -10,6 +10,8 @@ namespace Battleships.App.Utils
         /// <param name="content">Information to view</param>
         public static void WriteInfo(string content)
         {
+            if(Console.IsOutputRedirected) return;
+            
             //clear info rows
             ClearInfoRows();
 
@@ -27,6 +29,8 @@ namespace Battleships.App.Utils
         /// <param name="row">Row of the board</param>
         public static void WriteChar(char character, int col, int row)
         {
+            if(Console.IsOutputRedirected) return;
+            
             Console.SetCursorPosition(col * 4 + 4, row + 2);
             Console.Write(character);
         }
@@ -36,6 +40,8 @@ namespace Battleships.App.Utils
         /// </summary>
         public static void ShowWelcomeScreen()
         {
+            if(Console.IsOutputRedirected) return;
+            
             Console.WriteLine("Welcome to the game of battleships!");
             Console.WriteLine(); //break line
             Console.WriteLine("INSTRUCTIONS \n" +
@@ -53,6 +59,7 @@ namespace Battleships.App.Utils
         /// </summary>
         public static void ShowYouWinScreen()
         {
+            if(Console.IsOutputRedirected) return;
             
             //clear info rows
             ClearInfoRows();
@@ -68,6 +75,8 @@ namespace Battleships.App.Utils
         /// </summary>
         public static void DrawBoard()
         {
+            if(Console.IsOutputRedirected) return;
+            
             Console.Clear();
             Console.SetCursorPosition(0,0);
             Console.WriteLine("    A   B   C   D   E   F   G   H   I   J");
@@ -90,6 +99,8 @@ namespace Battleships.App.Utils
         /// </summary>
         private static void ClearInfoRows()
         {
+            if(Console.IsOutputRedirected) return;
+            
             Console.SetCursorPosition(0, 14);
             Console.Write("".PadRight(Console.WindowWidth, ' '));
             Console.SetCursorPosition(0, 15);

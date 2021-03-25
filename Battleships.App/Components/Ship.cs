@@ -6,11 +6,19 @@ using Battleships.App.Utils;
 
 namespace Battleships.App.Components
 {
-    class Ship
+    public class Ship
     {
         public List<Position> Positions { get; private set; }
         public string Type { get; set; }
 
+        /// <summary>
+        /// Create ship with no parameters
+        /// </summary>
+        public Ship()
+        {
+            Positions = new List<Position>();
+        }
+        
         /// <summary>
         /// Creates ship with specified length and within boundaries of the board.
         /// </summary>
@@ -90,6 +98,19 @@ namespace Battleships.App.Components
         public bool HasPosition(int col, int row)
         {
             return Positions.Any(p => p.Column == col && p.Row == row);
+        }
+        
+        /// <summary>
+        /// Checks if ship is placed on given coordinates.
+        /// </summary>
+        /// <param name="position">Position in string</param>
+        /// <returns>The method returns bool</returns>
+        public bool HasPosition(string position)
+        {
+            if (!position.IsProperShot()) 
+                return false;
+            
+            return Positions.Any(p => p.ColumnCharacter == position[0] && p.Row == (int) char.GetNumericValue(position[1]));
         }
 
         /// <summary>
