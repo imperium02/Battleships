@@ -10,7 +10,7 @@ namespace Battleships.Tests.Utils
         public void TestProperIsProperShot()
         {
             var shot = "A5";
-            Assert.IsTrue(shot.IsProperShot());
+            Assert.IsTrue(shot.IsProperShot(15));
         }
         
         [Theory]
@@ -22,7 +22,7 @@ namespace Battleships.Tests.Utils
         [TestCase("AB")]
         public void TestImproperIsProperShot(string? shot)
         {
-            Assert.IsFalse(shot.IsProperShot());
+            Assert.IsFalse(shot.IsProperShot(15));
         }
     }
 }

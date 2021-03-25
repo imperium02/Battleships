@@ -8,23 +8,26 @@ namespace Battleships.App.Components
 {
     public class Ship
     {
+        private readonly int _size;
         public List<Position> Positions { get; private set; }
         public string Type { get; set; }
 
         /// <summary>
         /// Create ship with no parameters
         /// </summary>
-        public Ship()
+        public Ship(int size)
         {
             Positions = new List<Position>();
+            _size = size;
         }
         
         /// <summary>
         /// Creates ship with specified length and within boundaries of the board.
         /// </summary>
         /// <param name="shipLength">The length of a ship</param>
-        public Ship(int shipLength)
+        public Ship(int shipLength, int size)
         {
+            _size = size;
             bool insideBoard = false;
             while (!insideBoard)
             {
@@ -32,8 +35,8 @@ namespace Battleships.App.Components
                 Positions = new List<Position>();
                 var random = new Random();
                 var rotation = (Rotation) random.Next(0, 2);
-                var startRow = random.Next(0, 10);
-                var startColumn = random.Next(0, 10);
+                var startRow = random.Next(0, _size);
+                var startColumn = random.Next(0, _size);
                 int endRow = startRow, endColumn = startColumn;
                 
                 //add starting coordinate
@@ -61,7 +64,7 @@ namespace Battleships.App.Components
                 }
 
                 //check if created ship is placed within board boundaries
-                if (endColumn > 9 || endRow > 9) continue;
+                if (endColumn > _size-1 || endRow > _size-1) continue;
 
                 insideBoard = true;
             }
@@ -107,7 +110,7 @@ namespace Battleships.App.Components
         /// <returns>The method returns bool</returns>
         public bool HasPosition(string position)
         {
-            if (!position.IsProperShot()) 
+            if (!position.IsProperShot(_size)) 
                 return false;
             
             return Positions.Any(p => p.ColumnCharacter == position[0] && p.Row == (int) char.GetNumericValue(position[1]));

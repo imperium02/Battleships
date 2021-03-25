@@ -13,7 +13,7 @@ namespace Battleships.Tests.Components
         [SetUp]
         public void SetUp()
         {
-            _ships = ShipCreator.CreateShips(2, 1);
+            _ships = ShipCreator.CreateShips(2, 1, 15);
         }
         
         [Test]
@@ -36,8 +36,8 @@ namespace Battleships.Tests.Components
         {
             var ships = new List<Ship>()
             {
-                new Ship() {Positions = {new Position(1, 1)}},
-                new Ship() {Positions = {new Position(1, 2)}}
+                new Ship(15) {Positions = {new Position(1, 1)}},
+                new Ship(15) {Positions = {new Position(1, 2)}}
             };
             
             Assert.IsFalse(ShipCreator.AreShipsIntersecting(ships));
@@ -48,8 +48,8 @@ namespace Battleships.Tests.Components
         {
             var ships = new List<Ship>()
             {
-                new Ship() {Positions = {new Position(1, 1)}},
-                new Ship() {Positions = {new Position(1,1)}}
+                new Ship(15) {Positions = {new Position(1, 1)}},
+                new Ship(15) {Positions = {new Position(1,1)}}
             };
             
             Assert.IsTrue(ShipCreator.AreShipsIntersecting(ships));

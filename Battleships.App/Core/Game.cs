@@ -8,13 +8,16 @@ namespace Battleships.App.Core
 {
     public class Game
     {
+        private readonly int _size;
         public List<Ship> Ships { get; set; }
 
-        public Game()
+        public Game(int size)
         {
+            _size = size;
+            
             //board initialization
-            ConsoleHelper.DrawBoard();
-            ConsoleHelper.WriteInfo("Make your shot!");
+            ConsoleHelper.DrawBoard(_size);
+            ConsoleHelper.WriteInfo("Make your shot!", size);
             
             Ships = new List<Ship>();
         }
@@ -25,15 +28,17 @@ namespace Battleships.App.Core
         public bool MakeShot(string? userShot)
         {
             //read user input and validate
-            if (!userShot.IsProperShot())
+            if (!userShot.IsProperShot(_size))
             {
-                ConsoleHelper.WriteInfo("Enter proper coordinates!");
+                ConsoleHelper.WriteInfo("Enter proper coordinates!", _size);
                 return false;
             }
             
             //get coordinates into int
             int column = userShot[0] - 'A';
             int row = (int) char.GetNumericValue(userShot[1]);
+            if(_size > 10 && userShot.Length == 3)
+                row = row * 10 + (int) char.GetNumericValue(userShot[2]);
             
             //check if any of the ships were hit
             if (Ships.Any(s => s.IsHit(column, row)))
@@ -42,13 +47,14 @@ namespace Battleships.App.Core
                 ConsoleHelper.WriteChar('X', column, row);
                 ConsoleHelper.WriteInfo(ship.IsDestroyed()
                     ? $"Good shot at {userShot}! {ship.Type} destroyed!"
-                    : $"Good shot at {userShot}! It's a {ship.Type}!");
+                    : $"Good shot at {userShot}! It's a {ship.Type}!",
+                    _size);
                 return true;
             }
             else
             {
                 ConsoleHelper.WriteChar('O', column, row);
-                ConsoleHelper.WriteInfo($"Miss at {userShot}! Make another shot!");
+                ConsoleHelper.WriteInfo($"Miss at {userShot}! Make another shot!", _size);
                 return false;
             }
         }

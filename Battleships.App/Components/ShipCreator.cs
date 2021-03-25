@@ -10,7 +10,7 @@ namespace Battleships.App.Components
         /// </summary>
         /// <param name="destroyers">Number of destroyers</param>
         /// <param name="battleships">Number of battleships</param>
-        public static List<Ship> CreateShips(int destroyers, int battleships)
+        public static List<Ship> CreateShips(int destroyers, int battleships, int size)
         {
             var createdShips = new List<Ship>();
             bool allProper = false;
@@ -19,11 +19,11 @@ namespace Battleships.App.Components
                 //create ship entities
                 for (int i = 0; i < destroyers; i++)
                 {
-                    createdShips.Add(new Ship(4));
+                    createdShips.Add(new Ship(4, size));
                 }
                 for (int i = 0; i < battleships; i++)
                 {
-                    createdShips.Add(new Ship(5));
+                    createdShips.Add(new Ship(5, size));
                 }
 
                 //check if ships have intersecting positions with each other

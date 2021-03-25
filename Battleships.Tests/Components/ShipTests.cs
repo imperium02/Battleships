@@ -17,11 +17,11 @@ namespace Battleships.Tests.Components
         [SetUp]
         public void SetUp()
         {
-            _emptyShip = new Ship();
-            _cruiser = new Ship(4);
-            _battleship = new Ship(5);
-            _notDefined = new Ship(6);
-            _preDefined = new Ship()
+            _emptyShip = new Ship(15);
+            _cruiser = new Ship(4, 15);
+            _battleship = new Ship(5, 15);
+            _notDefined = new Ship(6, 15);
+            _preDefined = new Ship(15)
             {
                 Positions =
                 {
@@ -83,7 +83,7 @@ namespace Battleships.Tests.Components
         [Test]
         public void TestProperIsDestroyed()
         {
-            var ship = new Ship() {Positions = {new Position(1,1) {Hit = true}}};
+            var ship = new Ship(15) {Positions = {new Position(1,1) {Hit = true}}};
             
             Assert.IsTrue(ship.IsDestroyed());
         }

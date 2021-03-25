@@ -18,9 +18,9 @@ namespace Battleships.Tests.Core
         [SetUp]
         public void SetUp()
         {
-            _game = new Game() { Ships = new List<Ship>()
+            _game = new Game(15) { Ships = new List<Ship>()
             {
-                new Ship()
+                new Ship(15)
                 {
                     Positions = {
                         new Position(1,1), 
