@@ -51,7 +51,6 @@ namespace Battleships.App.Utils
                               "To make a shot you need to enter proper coordinates starting with column. For example: \"A5\" \n" +
                               "Good luck!");
             Console.WriteLine(); //break line
-            Console.Write("Enter size of the map:");
         }
 
         /// <summary>
@@ -99,6 +98,11 @@ namespace Battleships.App.Utils
             Console.WriteLine("".PadRight(size * 4, '-'));
         }
 
+        /// <summary>
+        /// Allows to display custom message to the user and get input from him.
+        /// </summary>
+        /// <param name="optionString">Message to display to the user</param>
+        /// <returns>The method returns string input from the user</returns>
         public static string GetOption(string optionString)
         {
             Console.Clear();

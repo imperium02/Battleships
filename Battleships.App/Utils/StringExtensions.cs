@@ -20,13 +20,13 @@ namespace Battleships.App.Utils
             if (!char.IsUpper(shot[0])) return false;
             if (!Regex.IsMatch(shot, $"^[A-{(char) ('A' + (size - 1))}].*")) return false;
             if (!char.IsDigit(shot[1])) return false;
-            if (shot[1] == '0') return false;
             if (size > 10 && shot.Length == 3)
             {
                 if (!char.IsDigit(shot[2])) return false;
                 var rowString = shot.Substring(1);
                 var rowInt = Convert.ToInt32(rowString);
-                if (rowInt > 25) return false;
+                if (rowInt > size - 1) return false;
+                if (shot[1] == '0') return false;
             }
 
             return true;
@@ -52,6 +52,11 @@ namespace Battleships.App.Utils
             return true;
         }
 
+        /// <summary>
+        /// Validates if number of ships is proper
+        /// </summary>
+        /// <param name="number">user input of ships number</param>
+        /// <returns>The method returns bool</returns>
         public static bool IsProperShipsNumber(this string? number)
         {
             if (number is null) return false;

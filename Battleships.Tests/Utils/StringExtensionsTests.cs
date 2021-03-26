@@ -9,6 +9,7 @@ namespace Battleships.Tests.Utils
         [Theory]
         [TestCase("A5")]
         [TestCase("A13")]
+        [TestCase("A0")]
         public void TestProperIsProperShot(string? shot)
         {
             Assert.IsTrue(shot.IsProperShot(15));
@@ -24,7 +25,7 @@ namespace Battleships.Tests.Utils
         [TestCase("A1O")]
         [TestCase("A")]
         [TestCase("")]
-        [TestCase("A0")]
+        [TestCase("A20")]
         public void TestImproperIsProperShot(string? shot)
         {
             Assert.IsFalse(shot.IsProperShot(15));
