@@ -6,9 +6,9 @@ using Battleships.App.Utils;
 
 namespace Battleships.App.Components
 {
-    public class Ship
+    public class Ship : IShip
     {
-        public List<Position> Positions { get; private set; }
+        public List<Position> Positions { get; set; }
         public string Type { get; set; }
 
         /// <summary>
@@ -74,13 +74,7 @@ namespace Battleships.App.Components
                 _ => "Ship not defined"
             };
         }
-
-        /// <summary>
-        /// Checks if ship was hit with given coordinates of the shot.
-        /// </summary>
-        /// <param name="col">Column coordinate of the shot</param>
-        /// <param name="row">Row coordinate of the shot</param>
-        /// <returns>The method return bool</returns>
+        
         public bool IsHit(int col, int row)
         {
             var position = Positions.FirstOrDefault(p => p.Column == col && p.Row == row);
@@ -88,23 +82,12 @@ namespace Battleships.App.Components
             position.Hit = true;
             return true;
         }
-
-        /// <summary>
-        /// Checks if ship is placed on given coordinates.
-        /// </summary>
-        /// <param name="col">Column coordinate</param>
-        /// <param name="row">Row coordinate</param>
-        /// <returns>The method returns bool</returns>
+        
         public bool HasPosition(int col, int row)
         {
             return Positions.Any(p => p.Column == col && p.Row == row);
         }
         
-        /// <summary>
-        /// Checks if ship is placed on given coordinates.
-        /// </summary>
-        /// <param name="position">Position in string</param>
-        /// <returns>The method returns bool</returns>
         public bool HasPosition(string position)
         {
             if (!position.IsProperShot()) 
@@ -112,11 +95,7 @@ namespace Battleships.App.Components
             
             return Positions.Any(p => p.ColumnCharacter == position[0] && p.Row == (int) char.GetNumericValue(position[1]));
         }
-
-        /// <summary>
-        /// Checks if ship is destroyed.
-        /// </summary>
-        /// <returns>The method returns bool</returns>
+        
         public bool IsDestroyed()
         {
             return Positions.All(p => p.Hit);

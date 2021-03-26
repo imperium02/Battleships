@@ -8,7 +8,7 @@ namespace Battleships.App.Core
 {
     public class Game
     {
-        public List<Ship> Ships { get; set; }
+        public List<IShip> Ships { get; set; }
 
         public Game()
         {
@@ -16,7 +16,7 @@ namespace Battleships.App.Core
             ConsoleHelper.DrawBoard();
             ConsoleHelper.WriteInfo("Make your shot!");
             
-            Ships = new List<Ship>();
+            Ships = new List<IShip>();
         }
 
         /// <summary>
