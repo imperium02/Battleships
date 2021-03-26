@@ -47,7 +47,7 @@ namespace Battleships.Tests.Components
             Assert.AreEqual(5, _battleship.Positions.Count);
             Assert.AreEqual(6, _notDefined.Positions.Count);
 
-            Assert.AreEqual("Cruiser", _cruiser.Type);
+            Assert.AreEqual("Destroyer", _cruiser.Type);
             Assert.AreEqual("Battleship", _battleship.Type);
             Assert.AreEqual("Ship not defined", _notDefined.Type);
         }

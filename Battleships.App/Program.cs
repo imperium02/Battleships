@@ -33,21 +33,21 @@ namespace Battleships.App
                 }
 
                 // read number of cruisers
-                var cruisersString = "";
-                while (!cruisersString.IsProperShipsNumber())
+                var destroyersString = "";
+                while (!destroyersString.IsProperShipsNumber())
                 {
-                    cruisersString = ConsoleHelper.GetOption("Enter number of cruisers (4 length): ");
+                    destroyersString = ConsoleHelper.GetOption("Enter number of destroyers (4 length): ");
                 }
             
                 //convert options to int
                 int size = Convert.ToInt32(sizeString);
                 int battleshipsNumber = Convert.ToInt32(battleshipsString);
-                int cruisersNumber = Convert.ToInt32(cruisersString);
+                int destroyersNumber = Convert.ToInt32(destroyersString);
                 
                 //new game
                 var game = new Game(size)
                 {
-                    Ships = ShipCreator.CreateShips(cruisersNumber, battleshipsNumber, size)
+                    Ships = ShipCreator.CreateShips(destroyersNumber, battleshipsNumber, size)
                 };
                 
                 //game loop
