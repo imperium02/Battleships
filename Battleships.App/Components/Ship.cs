@@ -69,7 +69,7 @@ namespace Battleships.App.Components
             //add ship type according to it's length
             Type = shipLength switch
             {
-                4 => "Cruiser",
+                4 => "Destroyer",
                 5 => "Battleship",
                 _ => "Ship not defined"
             };
