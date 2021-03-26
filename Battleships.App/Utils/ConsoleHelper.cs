@@ -64,7 +64,7 @@ namespace Battleships.App.Utils
             ClearInfoRows(size);
             
             //write you win info
-            Console.SetCursorPosition(0,14);
+            Console.SetCursorPosition(0,size + 4);
             Console.WriteLine("Congratulations you won!");
             Console.Write("To play another game press ENTER to leave press any other button: ");
         }
