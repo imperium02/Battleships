@@ -9,7 +9,7 @@ namespace Battleships.App.Core
     public class Game
     {
         private readonly int _size;
-        public List<Ship> Ships { get; set; }
+        public List<IShip> Ships { get; set; }
 
         public Game(int size)
         {
@@ -19,7 +19,7 @@ namespace Battleships.App.Core
             ConsoleHelper.DrawBoard(_size);
             ConsoleHelper.WriteInfo("Make your shot!", size);
             
-            Ships = new List<Ship>();
+            Ships = new List<IShip>();
         }
 
         /// <summary>

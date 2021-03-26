@@ -10,9 +10,9 @@ namespace Battleships.App.Components
         /// </summary>
         /// <param name="destroyers">Number of destroyers</param>
         /// <param name="battleships">Number of battleships</param>
-        public static List<Ship> CreateShips(int destroyers, int battleships, int size)
+        public static List<IShip> CreateShips(int destroyers, int battleships, int size)
         {
-            var createdShips = new List<Ship>();
+            var createdShips = new List<IShip>();
             bool allProper = false;
             while (!allProper)
             {
@@ -45,7 +45,7 @@ namespace Battleships.App.Components
         /// </summary>
         /// <param name="ships">created list of ships</param>
         /// <returns>The method returns bool</returns>
-        public static bool AreShipsIntersecting(List<Ship> ships)
+        public static bool AreShipsIntersecting(List<IShip> ships)
         {
             var shipPositions = ships.SelectMany(s => s.Positions);
             return shipPositions.Distinct().Count() != shipPositions.Count();

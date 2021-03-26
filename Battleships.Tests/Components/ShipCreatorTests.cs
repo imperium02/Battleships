@@ -9,7 +9,7 @@ namespace Battleships.Tests.Components
     [TestFixture]
     public class ShipCreatorTests
     {
-        private List<Ship> _ships;
+        private List<IShip> _ships;
         [SetUp]
         public void SetUp()
         {
@@ -34,7 +34,7 @@ namespace Battleships.Tests.Components
         [Test]
         public void TestProperAreShipsIntersecting()
         {
-            var ships = new List<Ship>()
+            var ships = new List<IShip>()
             {
                 new Ship(15) {Positions = {new Position(1, 1)}},
                 new Ship(15) {Positions = {new Position(1, 2)}}
@@ -46,7 +46,7 @@ namespace Battleships.Tests.Components
         [Test]
         public void TestImproperAreShipsIntersecting()
         {
-            var ships = new List<Ship>()
+            var ships = new List<IShip>()
             {
                 new Ship(15) {Positions = {new Position(1, 1)}},
                 new Ship(15) {Positions = {new Position(1,1)}}
