@@ -98,6 +98,13 @@ namespace Battleships.App.Utils
             Console.SetCursorPosition(4, size + 2);
             Console.WriteLine("".PadRight(size * 4, '-'));
         }
+
+        public static string GetOption(string optionString)
+        {
+            Console.Clear();
+            Console.Write(optionString);
+            return Console.ReadLine();
+        }
         
         /// <summary>
         /// Clears information rows.

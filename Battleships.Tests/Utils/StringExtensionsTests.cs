@@ -50,5 +50,22 @@ namespace Battleships.Tests.Utils
         {
             Assert.IsFalse(size.IsProperSize());
         }
+
+        [Test]
+        public void TestProperIsProperShipsNumber()
+        {
+            Assert.IsTrue("3".IsProperShipsNumber());
+        }
+
+        [Theory]
+        [TestCase(null)]
+        [TestCase("12")]
+        [TestCase("00")]
+        [TestCase("")]
+        [TestCase("a")]
+        public void TestImproperIsProperShipsNumber(string number)
+        {
+            Assert.IsFalse(number.IsProperShipsNumber());
+        }
     }
 }

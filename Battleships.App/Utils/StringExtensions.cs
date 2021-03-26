@@ -51,5 +51,14 @@ namespace Battleships.App.Utils
 
             return true;
         }
+
+        public static bool IsProperShipsNumber(this string? number)
+        {
+            if (number is null) return false;
+            if (number.Length != 1) return false;
+            if (!char.IsDigit(number[0])) return false;
+
+            return true;
+        }
     }
 }

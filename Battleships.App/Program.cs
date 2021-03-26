@@ -17,22 +17,38 @@ namespace Battleships.App
             var sizeString = Console.ReadLine();
             while (!sizeString.IsProperSize())
             {
-                Console.Clear();
-                Console.Write("Enter proper size of the map: ");
-                sizeString = Console.ReadLine();
+                sizeString = ConsoleHelper.GetOption("Enter proper size of the map: ");
             }
 
+            // read number of battleships
+            var battleshipsString = "";
+            while (!battleshipsString.IsProperShipsNumber())
+            {
+                battleshipsString = ConsoleHelper.GetOption("Enter number of battleships (5 length): ");
+            }
+
+            // read number of cruisers
+            var cruisersString = "";
+            while (!cruisersString.IsProperShipsNumber())
+            {
+                cruisersString = ConsoleHelper.GetOption("Enter number of cruisers (4 length): ");
+            }
+            
+            //convert options to int
             int size = Convert.ToInt32(sizeString);
+            int battleshipsNumber = Convert.ToInt32(battleshipsString);
+            int cruisersNumber = Convert.ToInt32(cruisersString);
 
             Console.Clear();
             Console.Write("Click ENTER to start: ");
+            
             //restart game on ENTER, end game on any other key
             while (Console.ReadKey().Key == ConsoleKey.Enter)
             {
                 //new game
                 var game = new Game(size)
                 {
-                    Ships = ShipCreator.CreateShips(2, 1, size)
+                    Ships = ShipCreator.CreateShips(cruisersNumber, battleshipsNumber, size)
                 };
                 
                 //game loop
