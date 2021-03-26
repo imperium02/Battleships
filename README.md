@@ -5,6 +5,7 @@ One way Battleships game in console and written in c#.
 Following technologies were used and should be installed before compiling the app
 * .NET 5 SDK
 * Visual Studio 2019 or Rider 2020.3
+* NUnit 3.13 for testing
 
 # Setup
 ### From command line
@@ -29,4 +30,17 @@ After cloning the project onto your computer:
 
 ![compile-and-run](https://user-images.githubusercontent.com/15459502/112652642-e75a1a80-8e4d-11eb-9852-f150ba532233.png)
 
+# Testing
+To run tests enter command below into terminal from root folder of solution
+```
+dotnet test
+```
+or from Visual Studio
+
+![testing](https://user-images.githubusercontent.com/15459502/112659541-c9dc7f00-8e54-11eb-88c0-3fcde43097a3.png)
+
+# Notes
+* Code in a master branch is a code made specifically to spec from this [article](https://medium.com/guestline-labs/hints-for-our-interview-process-and-code-test-ae647325f400). Because of the there is no support for resizable map and the user has no ability to chose the amount of ships that will spawn. To keep it simple some of the methods are hard coded, for example the method to draw a board with coordiantes. I made another version of the app that gives the user ability to resize the map and chose the amount of ships that he wants to spawn. Code for this version is available in "resizableMap" branch.
+
+* I tried to keep the code simple and not overly fragmented. Because of that there are no Battleship and Destroyer classes that inherit from base Ship class. But doing so in the future shouldn't be overly hard, because I tried to keep in mind the ability to extend the code.
 
